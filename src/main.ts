@@ -2,12 +2,13 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 const cookieSession = require('cookie-session');
+require('dotenv').config({ path: `../${process.env.NODE_ENV}.env` });
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.use(cookieSession({
-    keys: ['sprinklerSplashes']
-  }));
+  // app.use(cookieSession({
+  //   keys: ['sprinklerSplashes']
+  // }));
   app.enableCors();
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true //no extraneous properties sent by user:)
