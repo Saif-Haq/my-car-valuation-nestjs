@@ -8,6 +8,7 @@ import { User } from './users/entities/user.entity';
 import { Report } from './reports/entities/report.entity';
 import { APP_PIPE } from '@nestjs/core';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmConfigService } from './config/typeorm.config';
 const cookieSession = require('cookie-session');
 
 @Module({
@@ -21,16 +22,23 @@ const cookieSession = require('cookie-session');
     //   entities: [User, Report],
     //   synchronize: true, //DON'T KEEP TRUE FOR PROD.
     // }),
+
+
+    //SQLITE WORKING :
+    // TypeOrmModule.forRootAsync({
+    //   inject: [ConfigService],
+    //   useFactory: (config: ConfigService) => {
+    //     return {
+    //       type: 'sqlite',
+    //       database: config.get<string>('DB_NAME'),
+    //       entities: [User, Report],
+    //       synchronize: false,
+    //     }
+    //   }
+    // }),
+
     TypeOrmModule.forRootAsync({
-      inject: [ConfigService],
-      useFactory: (config: ConfigService) => {
-        return {
-          type: 'sqlite',
-          database: config.get<string>('DB_NAME'),
-          entities: [User, Report],
-          synchronize: true,
-        }
-      }
+      useClass: TypeOrmConfigService,
     }),
   ],
   controllers: [AppController],
@@ -42,10 +50,12 @@ const cookieSession = require('cookie-session');
 })
 
 export class AppModule {
+  constructor(private configService: ConfigService) { }
+
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(
       cookieSession({
-        keys: ['sprinklerSplashes']
+        keys: [`${this.configService.get('COOKIE_KEY')}`]
       })).forRoutes('*');
   }
 }
