@@ -24,6 +24,12 @@ Migrations
 $ npm install
 ```
 
+## Migrations
+
+```bash
+$ npm run typeorm migration:run
+```
+
 ## Running the app
 
 ```bash
