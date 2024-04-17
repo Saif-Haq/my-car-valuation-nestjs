@@ -49,6 +49,9 @@ $ npm run start:prod
 # unit tests
 $ npm run test
 
+# file specific unit tests
+$ npm run test:watch
+
 # e2e tests
 $ npm run test:e2e
 
