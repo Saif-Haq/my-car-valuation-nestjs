@@ -18,8 +18,6 @@ Guards and Interceptors
 Migrations
 </p>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
 ## Installation
 
 ```bash
