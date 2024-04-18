@@ -18,6 +18,9 @@ Guards and Interceptors
 Migrations
 </p>
 
+POSTMAN COLLECTION: https://documenter.getpostman.com/view/26930441/2sA3Bn5sGR
+
+
 ## Installation
 
 ```bash
@@ -27,7 +30,8 @@ $ npm install
 ## Migrations
 
 ```bash
-$ npm run typeorm migration:run
+$ npm run migration:generate
+$ npm run migration:run
 ```
 
 ## Running the app
