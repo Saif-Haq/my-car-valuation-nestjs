@@ -1,19 +1,20 @@
-import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
+// import { Injectable } from '@nestjs/common';
+// import { ConfigService } from '@nestjs/config';
+// import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 
-@Injectable()
-export class TypeOrmConfigService implements TypeOrmOptionsFactory {
-  constructor(private configService: ConfigService) { }
+// @Injectable()
+// export class TypeOrmConfigService implements TypeOrmOptionsFactory {
+//   constructor(private configService: ConfigService) { }
 
-  createTypeOrmOptions(): TypeOrmModuleOptions {
-    return {
-      type: 'sqlite',
-      synchronize: process.env.NODE_ENV == 'test' ? true : false,
-      database: this.configService.get<string>('DB_NAME'),
-      autoLoadEntities: true,
-      migrationsRun: process.env.NODE_ENV == 'test' ? true : false,
-      keepConnectionAlive: process.env.NODE_ENV == 'test' ? true : false,
-    };
-  }
-}
+//   createTypeOrmOptions(): TypeOrmModuleOptions {
+//     return {
+//       type: 'sqlite',
+//       synchronize: process.env.NODE_ENV == 'test' ? true : false,
+//       // database: this.configService.get<string>('DB_NAME'),
+//       database: 'db/sql',
+//       autoLoadEntities: true,
+//       migrationsRun: process.env.NODE_ENV == 'test' ? true : false,
+//       keepConnectionAlive: process.env.NODE_ENV == 'test' ? true : false,
+//     };
+//   }
+// }

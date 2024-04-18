@@ -1,8 +1,19 @@
-import { DataSource, DataSourceOptions } from 'typeorm';
+// import { DataSource, DataSourceOptions } from 'typeorm';
 
-export const appDataSource = new DataSource({
-  type: 'sqlite',
-  database: 'db.sqlite',
-  entities: ['**/*.entity*{.js,.ts}'],
-  migrations: [__dirname + '/migrations/*{.js,.ts}'],
-} as DataSourceOptions);
+// export const appDataSource = new DataSource({
+//   type: 'sqlite',
+//   database: 'db.sqlite',
+//   entities: ['**/*.entity*{.js,.ts}'],
+//   migrations: [__dirname + '/migrations/*{.js,.ts}'],
+// } as DataSourceOptions);
+import { DataSource, DataSourceOptions } from 'typeorm';
+export const sqliteDataSource = new DataSource(
+  {
+    type: 'sqlite',
+    database: 'db.sqlite',
+    entities: ['**/*.entity*{.js,.ts}'],
+    migrations: [__dirname + '/migrations/*{.js,.ts}'],
+  });
+
+// const dataSource = sqliteDataSource;
+// export default dataSource;

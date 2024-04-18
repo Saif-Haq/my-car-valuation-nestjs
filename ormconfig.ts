@@ -1,8 +1,9 @@
-// var dbConfig = {
+// import { DataSource, DataSourceOptions } from 'typeorm';
+
+// const dbConfig = {
 //   synchronize: false,
-//   migrations: ['migrations/*.js'],
-//   cli: { migrationsDir: 'migrations' },
-// };
+//   migrations: ['src/migrations/*.js'],
+// } as DataSourceOptions;
 
 // switch (process.env.NODE_ENV) {
 //   case 'development':
@@ -12,7 +13,6 @@
 //       entities: ['**/*.entity.js'],
 //     });
 //     break;
-
 //   case 'test':
 //     Object.assign(dbConfig, {
 //       type: 'sqlite',
@@ -21,19 +21,23 @@
 //       migrationsRun: true,
 //     });
 //     break;
-
 //   case 'production':
 //     Object.assign(dbConfig, {
 //       type: 'postgres',
-//       url: process.env.DATABASE_URL,
+//       url: process.env.DATABASE_URL, // heroku env variable to connect to posgres
 //       migrationsRun: true,
-//       entities: ['**.*.entity.js'],
+//       entities: ['**/*.entity.js'], // in production, we are running js
 //       ssl: {
 //         rejectUnauthorized: false,
 //       },
 //     });
 //     break;
-
 //   default:
-//     throw new Error('Unknown Env NODE_ENV');
+//     throw new Error('unknown environment');
 // }
+
+// export const dataSourceOptions: DataSourceOptions = dbConfig;
+
+// const dataSource = new DataSource(dataSourceOptions);
+
+// export default dataSource;
